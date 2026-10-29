@@ -1,8 +1,9 @@
+
 using UnityEngine;
 
 public class Estado_Volar : State_Base
 {
-    [Header("Movimiento")]
+    [Header("Movimiento horizontal")]
     [SerializeField] private float velocidad = 3f;
 
     [Header("Ondulación")]
@@ -12,24 +13,27 @@ public class Estado_Volar : State_Base
     private Rigidbody2D rb;
     private Transform player;
 
+    private float alturaBase;
     private float tiempo;
 
     protected override void Awake()
     {
         base.Awake();
-
         rb = controlledObject.GetComponent<Rigidbody2D>();
     }
 
     public override void EnterState()
     {
-        GameObject objetoPlayer = GameObject.FindGameObjectWithTag("Player");
+        GameObject objetoPlayer =
+            GameObject.FindGameObjectWithTag("Player");
 
         if (objetoPlayer != null)
         {
             player = objetoPlayer.transform;
         }
 
+        // Guardamos la altura inicial del enemigo.
+        alturaBase = controlledObject.transform.position.y;
         tiempo = 0f;
     }
 
@@ -40,32 +44,21 @@ public class Estado_Volar : State_Base
 
         tiempo += Time.deltaTime;
 
-        // Dirección horizontal hacia el jugador
+        // 1. Avanzar horizontalmente hacia el jugador.
         float direccionX = Mathf.Sign(
-            player.position.x -
-            controlledObject.transform.position.x
+            player.position.x - controlledObject.transform.position.x
         );
 
-        // Altura deseada respecto al jugador
-        float alturaObjetivo =
-            player.position.y +
-            Mathf.Sin(tiempo * frecuencia) * amplitud;
+        float nuevaX =
+            rb.position.x + direccionX * velocidad * Time.deltaTime;
 
-        // Diferencia entre nuestra altura y la altura deseada
-        float diferenciaY =
-            alturaObjetivo -
-            controlledObject.transform.position.y;
+        // 2. Oscilar alrededor de la altura base.
+        float nuevaY =
+            alturaBase +
+            Mathf.Sin(tiempo * frecuencia * Mathf.PI * 2f) * amplitud;
 
-        // Limitamos la velocidad vertical
-        float velocidadY = Mathf.Clamp(
-            diferenciaY * velocidad,
-            -velocidad,
-            velocidad
-        );
-
-        rb.linearVelocity = new Vector2(
-            direccionX * velocidad,
-            velocidadY
-        );
+        // 3. Aplicar la nueva posición.
+        rb.MovePosition(new Vector2(nuevaX, nuevaY));
     }
 }
+
