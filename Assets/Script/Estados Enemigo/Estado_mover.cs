@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Estado_mover : State_Base
+public class Estado_mover : State_Base_Enemigo
 {
     [SerializeField] private float velocidad = 3f;
 

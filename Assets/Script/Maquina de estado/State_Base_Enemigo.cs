@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class State_Base : MonoBehaviour
+public class State_Base_Enemigo : MonoBehaviour
 {
     // Cambiamos el nombre a state_machine para que coincida con tus otros scripts
-    protected State_Machine state_machine;
+    protected State_Machine_Enemigo state_machine;
     protected GameObject controlledObject;
 
     protected virtual void Awake()
     {
         // Buscamos la referencia con el nombre corregido
-        state_machine = GetComponentInParent<State_Machine>();
+        state_machine = GetComponentInParent<State_Machine_Enemigo>();
 
         if (state_machine != null)
         {

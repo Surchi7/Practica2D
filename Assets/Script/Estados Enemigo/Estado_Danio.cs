@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Estado_Danio : State_Base
+public class Estado_Danio : State_Base_Enemigo
 {
     [Header("Daño")]
     [SerializeField] private int daño = 1;
@@ -50,7 +50,7 @@ public class Estado_Danio : State_Base
         if (temporizador >= tiempoDanio)
         {
             // Volvemos al estado que teníamos antes del daño
-            State_Base estadoAnterior = state_machine.GetPreviousState();
+            State_Base_Enemigo estadoAnterior = state_machine.GetPreviousState();
 
             if (estadoAnterior != null)
             {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Estado_Saltar : State_Base
+public class Estado_Saltar : State_Base_Enemigo
 {
     [Header("Salto")]
     [SerializeField] private float fuerzaSalto = 7f;

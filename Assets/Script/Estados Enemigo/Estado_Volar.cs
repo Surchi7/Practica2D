@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Estado_Volar : State_Base
+public class Estado_Volar : State_Base_Enemigo
 {
     [Header("Persecución")]
     [SerializeField] private float velocidad = 3f;

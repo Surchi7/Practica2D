@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class State_Machine : MonoBehaviour
+public class State_Machine_Enemigo : MonoBehaviour
 {
-    [SerializeField] private State_Base currentState;
+    [SerializeField] private State_Base_Enemigo currentState;
 
-    private State_Base nextState;
-    private State_Base estadoAnterior;
+    private State_Base_Enemigo nextState;
+    private State_Base_Enemigo estadoAnterior;
 
     private Coroutine stateMachineCoroutine;
 
@@ -46,7 +46,7 @@ public class State_Machine : MonoBehaviour
         }
     }
 
-    public void SetState(State_Base newState)
+    public void SetState(State_Base_Enemigo newState)
     {
         if (newState != null && newState != currentState)
         {
@@ -55,7 +55,7 @@ public class State_Machine : MonoBehaviour
         }
     }
 
-    public void SetState<T>() where T : State_Base
+    public void SetState<T>() where T : State_Base_Enemigo
     {
         var newState = GetComponentInChildren<T>();
 
@@ -66,12 +66,12 @@ public class State_Machine : MonoBehaviour
         }
     }
 
-    public State_Base GetCurrentState()
+    public State_Base_Enemigo GetCurrentState()
     {
         return currentState;
     }
 
-    public State_Base GetPreviousState()
+    public State_Base_Enemigo GetPreviousState()
     {
         return estadoAnterior;
     }
