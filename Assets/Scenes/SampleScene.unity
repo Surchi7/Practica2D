@@ -802,6 +802,18 @@ PrefabInstance:
       propertyPath: currentState
       value: 
       objectReference: {fileID: 2083703673}
+    - target: {fileID: 3299331901995838632, guid: c92524bc65da8324fa56d1b5585a5d4d, type: 3}
+      propertyPath: amplitud
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299331901995838632, guid: c92524bc65da8324fa56d1b5585a5d4d, type: 3}
+      propertyPath: velocidad
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299331901995838632, guid: c92524bc65da8324fa56d1b5585a5d4d, type: 3}
+      propertyPath: frecuencia
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3875884915991821378, guid: c92524bc65da8324fa56d1b5585a5d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.17
