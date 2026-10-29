@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class Estado_Volar : State_Base
 {
-    [Header("Movimiento horizontal")]
+    [Header("Persecución")]
     [SerializeField] private float velocidad = 3f;
 
     [Header("Ondulación")]
-    [SerializeField] private float amplitud = 1f;
+    [SerializeField] private float amplitud = 0.5f;
     [SerializeField] private float frecuencia = 2f;
 
     private Rigidbody2D rb;
     private Transform player;
-
-    private float alturaBase;
     private float tiempo;
 
     protected override void Awake()
@@ -32,8 +30,6 @@ public class Estado_Volar : State_Base
             player = objetoPlayer.transform;
         }
 
-        // Guardamos la altura inicial del enemigo.
-        alturaBase = controlledObject.transform.position.y;
         tiempo = 0f;
     }
 
@@ -44,21 +40,22 @@ public class Estado_Volar : State_Base
 
         tiempo += Time.deltaTime;
 
-        // 1. Avanzar horizontalmente hacia el jugador.
-        float direccionX = Mathf.Sign(
-            player.position.x - controlledObject.transform.position.x
-        );
+        // Dirección hacia el jugador en ambos ejes.
+        Vector2 direccion = (
+            (Vector2)player.position - rb.position
+        ).normalized;
 
-        float nuevaX =
-            rb.position.x + direccionX * velocidad * Time.deltaTime;
+        // Movimiento base hacia el jugador.
+        Vector2 movimiento =
+            direccion * velocidad * Time.deltaTime;
 
-        // 2. Oscilar alrededor de la altura base.
-        float nuevaY =
-            alturaBase +
-            Mathf.Sin(tiempo * frecuencia * Mathf.PI * 2f) * amplitud;
+        // Ondulación vertical agregada al movimiento.
+        float ondulacion =
+            Mathf.Sin(tiempo * frecuencia * Mathf.PI * 2f)
+            * amplitud * Time.deltaTime;
 
-        // 3. Aplicar la nueva posición.
-        rb.MovePosition(new Vector2(nuevaX, nuevaY));
+        movimiento.y += ondulacion;
+
+        rb.MovePosition(rb.position + movimiento);
     }
 }
-
