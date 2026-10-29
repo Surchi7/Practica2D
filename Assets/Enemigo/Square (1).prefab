@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5342843612208652713}
   m_Layer: 3
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,10 +229,6 @@ MonoBehaviour:
   fuerzaSalto: 7
   velocidadHorizontal: 3
   tiempoEspera: 0.5
-  capaSuelo:
-    serializedVersion: 2
-    m_Bits: 64
-  distanciaSuelo: 0.1
 --- !u!114 &3177842151989857966
 MonoBehaviour:
   m_ObjectHideFlags: 0

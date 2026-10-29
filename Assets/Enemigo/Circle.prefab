@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2377647153707122224}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882a3d9e6c1880744a0e6d4ae681b3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Estado_Volar
+  velocidad: 3
+  amplitud: 0.5
+  frecuencia: 2
 --- !u!114 &1379123426454757116
 MonoBehaviour:
   m_ObjectHideFlags: 0

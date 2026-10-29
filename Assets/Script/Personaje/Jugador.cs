@@ -27,13 +27,19 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    public void RecibirDaño(int puntoDeDaño)
+    public void RecibirDaño(int daño)
     {
-        vida -= puntoDeDaño;
+        vida -= daño;
+
+        Debug.Log("El jugador recibió " + daño + " de daño. Vida restante: " + vida);
 
         if (vida <= 0)
         {
-            Debug.Log("sin vida");
+            Morir();
         }
+    }
+    private void Morir()
+    {
+        Debug.Log("El jugador murió");
     }
 }
