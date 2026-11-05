@@ -46,19 +46,24 @@ public class ZonaImpacto : MonoBehaviour
             return;
         }
 
-        if (enemigosGolpeados.Contains(other.gameObject))
+        GameObject objetivo = other.attachedRigidbody != null
+            ? other.attachedRigidbody.gameObject
+            : other.gameObject;
+
+        if (enemigosGolpeados.Contains(objetivo))
         {
             return;
         }
 
-        enemigosGolpeados.Add(other.gameObject);
+        enemigosGolpeados.Add(objetivo);
 
-        Enemigo enemigo = other.GetComponent<Enemigo>();
+        IDamageable danable = objetivo.GetComponentInParent<IDamageable>();
 
-        if (enemigo == null)
+        if (danable == null)
         {
             Debug.LogWarning(
-                "El enemigo no tiene el componente Enemigo."
+                "El enemigo " + objetivo.name +
+                " no tiene un componente IDamageable."
             );
             return;
         }
@@ -72,6 +77,6 @@ public class ZonaImpacto : MonoBehaviour
         }
 
         int dañoAplicado = arma.ObtenerDaño();
-        enemigo.RecibirDaño(dañoAplicado);
+        danable.RecibirDaño(dañoAplicado);
     }
 }

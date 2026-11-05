@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2451003964926959690}
   - component: {fileID: 7701344389412676138}
   - component: {fileID: 1217972525455339561}
+  - component: {fileID: 7000000000000000003}
   m_Layer: 3
   m_Name: Triangle
   m_TagString: enemy
@@ -243,3 +244,16 @@ MonoBehaviour:
   fuerzaRebote: 5
   fuerzaReboteVertical: 2
   tiempoDanio: 0.5
+--- !u!114 &7000000000000000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890127099872485878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df2a4f8ea1d49998c66e3d86f504e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaEnemigo
+  vidaMaxima: 3

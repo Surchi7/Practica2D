@@ -10,7 +10,6 @@ public class Estado_Saltar : State_Base_Enemigo
     [SerializeField] private float tiempoEspera = 0.5f;
 
     private Rigidbody2D rb;
-    private Transform player;
 
     private float temporizador;
 
@@ -33,13 +32,6 @@ public class Estado_Saltar : State_Base_Enemigo
 
     public override void EnterState()
     {
-        GameObject objetoPlayer = GameObject.FindGameObjectWithTag("Player");
-
-        if (objetoPlayer != null)
-        {
-            player = objetoPlayer.transform;
-        }
-
         temporizador = 0f;
 
         if (state_machine.EstaEnElSuelo)
@@ -58,6 +50,8 @@ public class Estado_Saltar : State_Base_Enemigo
 
     public override void UpdateState()
     {
+        Transform player = state_machine.Jugador;
+
         if (rb == null || player == null)
             return;
 
@@ -69,7 +63,7 @@ public class Estado_Saltar : State_Base_Enemigo
 
                 if (temporizador >= tiempoEspera)
                 {
-                    SaltarHaciaJugador();
+                    SaltarHaciaJugador(player);
 
                     fase = Fase.Saltando;
 
@@ -104,7 +98,7 @@ public class Estado_Saltar : State_Base_Enemigo
         }
     }
 
-    private void SaltarHaciaJugador()
+    private void SaltarHaciaJugador(Transform player)
     {
         float direccion = Mathf.Sign(
             player.position.x -

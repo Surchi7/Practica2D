@@ -45,7 +45,7 @@ public class Saltar : State_Base
     // Regreso a Idle al hacer contacto con el suelo 🧱
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Suelo"))
         {
             state_machine.SetState<Idle>();
         }

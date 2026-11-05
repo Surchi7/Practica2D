@@ -27,15 +27,15 @@ public class Estado_Danio : State_Base_Enemigo
         temporizador = 0f;
 
         // 1. Hacemos daño al jugador
-        GameObject objetoPlayer = GameObject.FindGameObjectWithTag("Player");
+        Transform objetivo = state_machine.Jugador;
 
-        if (objetoPlayer != null)
+        if (objetivo != null)
         {
-            Player player = objetoPlayer.GetComponent<Player>();
+            IDamageable danable = objetivo.GetComponent<IDamageable>();
 
-            if (player != null)
+            if (danable != null)
             {
-                player.RecibirDaño(daño);
+                danable.RecibirDaño(daño);
             }
         }
 
@@ -64,14 +64,14 @@ public class Estado_Danio : State_Base_Enemigo
         if (rb == null)
             return;
 
-        GameObject objetoPlayer = GameObject.FindGameObjectWithTag("Player");
+        Transform objetivo = state_machine.Jugador;
 
-        if (objetoPlayer == null)
+        if (objetivo == null)
             return;
 
         float direccion = Mathf.Sign(
             controlledObject.transform.position.x -
-            objetoPlayer.transform.position.x
+            objetivo.position.x
         );
 
         rb.linearVelocity = new Vector2(

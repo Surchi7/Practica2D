@@ -1,25 +1,24 @@
-
 using UnityEngine;
 
-public class Enemigo : MonoBehaviour
+[DisallowMultipleComponent]
+public class VidaEnemigo : MonoBehaviour, IDamageable
 {
     [SerializeField] private int vidaMaxima = 3;
 
     private int vidaActual;
 
+    public int VidaActual => vidaActual;
+    public int VidaMaxima => vidaMaxima;
+    public bool EstaVivo => vidaActual > 0;
+
     private void Awake()
     {
         vidaActual = vidaMaxima;
-
-        Debug.Log(
-            gameObject.name + " aparece con " +
-            vidaActual + " puntos de vida."
-        );
     }
 
     public void RecibirDaño(int cantidad)
     {
-        if (vidaActual <= 0)
+        if (cantidad <= 0 || vidaActual <= 0)
         {
             return;
         }

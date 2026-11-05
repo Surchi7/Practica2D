@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6335913414881249213}
   - component: {fileID: 8326976920559637846}
   - component: {fileID: 2377647153707122224}
-  m_Layer: 0
+  - component: {fileID: 7000000000000000001}
+  m_Layer: 3
   m_Name: Circle
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -245,3 +246,16 @@ MonoBehaviour:
   fuerzaRebote: 5
   fuerzaReboteVertical: 2
   tiempoDanio: 0.2
+--- !u!114 &7000000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344474569659957617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df2a4f8ea1d49998c66e3d86f504e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaEnemigo
+  vidaMaxima: 3

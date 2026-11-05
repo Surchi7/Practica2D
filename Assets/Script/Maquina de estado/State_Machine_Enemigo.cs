@@ -13,6 +13,26 @@ public class State_Machine_Enemigo : MonoBehaviour
     // Cantidad de colisiones que tenemos con el suelo
     private int contactosSuelo = 0;
 
+    private Transform jugador;
+
+    public Transform Jugador
+    {
+        get
+        {
+            if (jugador == null)
+            {
+                GameObject objetoJugador =
+                    GameObject.FindGameObjectWithTag("Player");
+
+                if (objetoJugador != null)
+                {
+                    jugador = objetoJugador.transform;
+                }
+            }
+
+            return jugador;
+        }
+    }
 
     void Start()
     {

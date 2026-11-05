@@ -11,7 +11,6 @@ public class Estado_Volar : State_Base_Enemigo
     [SerializeField] private float frecuencia = 2f;
 
     private Rigidbody2D rb;
-    private Transform player;
     private float tiempo;
 
     protected override void Awake()
@@ -22,19 +21,13 @@ public class Estado_Volar : State_Base_Enemigo
 
     public override void EnterState()
     {
-        GameObject objetoPlayer =
-            GameObject.FindGameObjectWithTag("Player");
-
-        if (objetoPlayer != null)
-        {
-            player = objetoPlayer.transform;
-        }
-
         tiempo = 0f;
     }
 
     public override void UpdateState()
     {
+        Transform player = state_machine.Jugador;
+
         if (rb == null || player == null)
             return;
 

@@ -4,7 +4,6 @@ public class Estado_mover : State_Base_Enemigo
 {
     [SerializeField] private float velocidad = 3f;
 
-    private Transform player;
     private Rigidbody2D rb;
 
     protected override void Awake()
@@ -14,18 +13,10 @@ public class Estado_mover : State_Base_Enemigo
         rb = controlledObject.GetComponent<Rigidbody2D>();
     }
 
-    public override void EnterState()
-    {
-        GameObject objetoPlayer = GameObject.FindGameObjectWithTag("Player");
-
-        if (objetoPlayer != null)
-        {
-            player = objetoPlayer.transform;
-        }
-    }
-
     public override void UpdateState()
     {
+        Transform player = state_machine.Jugador;
+
         if (player == null || rb == null)
             return;
 

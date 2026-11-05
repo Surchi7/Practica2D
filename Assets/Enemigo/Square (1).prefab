@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2438943859912378666}
   - component: {fileID: -3349292903784412640}
   - component: {fileID: 5342843612208652713}
+  - component: {fileID: 7000000000000000002}
   m_Layer: 3
   m_Name: Square (1)
   m_TagString: enemy
@@ -245,3 +246,16 @@ MonoBehaviour:
   fuerzaRebote: 5
   fuerzaReboteVertical: 2
   tiempoDanio: 0.2
+--- !u!114 &7000000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585229459516640500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df2a4f8ea1d49998c66e3d86f504e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaEnemigo
+  vidaMaxima: 3
